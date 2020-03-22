@@ -6,6 +6,8 @@ import Badge from '../components/Badge';
 import BadgeForm from '../components/BadgeForm';
 // Estilos de la pagina
 import './styles/BadgeNew.css'
+// Alertas
+import Swal from 'sweetalert2/dist/sweetalert2';
 
 class BadgeNew extends React.Component {
 
@@ -35,6 +37,37 @@ class BadgeNew extends React.Component {
         });
     };
 
+    alertaFaltanDatos(faltantes) {
+        Swal.fire({
+            title: 'Alto ahi!',
+            text: `Te faltan campos por rellenar 🧐\n ${faltantes}`,
+            icon: 'error'
+        });
+    }
+
+    // Capturar el evento del envio de datos
+    handleSubmit = e => {
+        e.preventDefault();
+        let datoFaltante = [];
+
+        console.log('El submit se ha activado!');
+
+        for (const propiedad in this.state.form) {
+            if (this.state.form.hasOwnProperty(propiedad)) {
+                const valor = this.state.form[propiedad];
+                if (valor === '') {
+                    datoFaltante.push(propiedad);
+                }
+            }
+        }
+
+        if (this.state.form.firstName === '' || this.state.form.lastName === '' || this.state.form.email === '' || this.state.form.jobTitle === '' || this.state.form.twitter === '') {
+            console.log('faltan datos');
+            let camposFaltantes = datoFaltante.join(',');
+            this.alertaFaltanDatos(camposFaltantes)
+        }
+    };
+
     render() {
         return (
             <div>
@@ -56,8 +89,8 @@ class BadgeNew extends React.Component {
                             />
                         </div>
 
-                        <div className="col-6">
-                            <BadgeForm className="masEspacio" onChange={this.handleChange} formValues={this.state.form} />
+                        <div className="col-6 masEspacio">
+                            <BadgeForm onChange={this.handleChange} formValues={this.state.form} handleSubmit={this.handleSubmit} />
                         </div>
                     </div>
                 </div>

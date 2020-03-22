@@ -10,10 +10,12 @@ import ReactDOM from 'react-dom';
 // Importar Globalmente los estilos a nuestra app completa de react
 import 'bootstrap/dist/css/bootstrap.css';
 import './global.css'
+import 'sweetalert2/dist/sweetalert2.css'
 // Componentes
 // import Badge from './components/Badge';
 // Paginas que contienen componentes
 import BadgeNew from './pages/BadgeNew';
+
 
 // JSX
 // const jsx = <h1>Hello, Platzi Badges from React!</h1>;

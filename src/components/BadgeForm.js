@@ -1,13 +1,13 @@
 import React from 'react';
 
-class BadgeForm extends React.Component{
+class BadgeForm extends React.Component {
     // Contenedor de estados para controlarlos
     state = {
         // firstName: '',
         // lastName: '',
         // jobTitle: '',
         // email: '',
-        // twitter: '@'
+        // twitter: ''
     };
 
     // Capturador del evento de un cambio en el input
@@ -23,17 +23,18 @@ class BadgeForm extends React.Component{
     //     });
     // };
     // Capturador del evento click
-    handleClick = e => {
-        console.log('El boton ha sido clickeado');
-    };
+    // handleClick = e => {
+    //     console.log('El boton ha sido clickeado');
+    // };
     // Capturar el evento del envio de datos
-    handleSubmit = e => {
-       e.preventDefault();
-       console.log('El submit se ha activado!');
-       console.log(this.state);
-    };
+    // handleSubmit = e => {
+    //     e.preventDefault();
+    //     console.log('El submit se ha activado!');
+    //     console.log(this.props.formValues);
+    //     // const formulario = this.props.formValues;
+    // };
 
-    render(){
+    render() {
         return (
             <div>
                 <h1>New Attendant</h1>
@@ -48,30 +49,60 @@ class BadgeForm extends React.Component{
 
                 Tener en mente que puedes mandar por una propiedad dentro del componente en este caso el formulario para que este lo use para manejarlo desde otro componente y muchas otras cosas tambien por ende tener en mento estos usos que se le pueden dar a la hora de innovar usando funcionalidades externas a este que quiera usarlo
                 */}
-                <form onSubmit={this.handleSubmit}>
+                <form onSubmit={this.props.handleSubmit}>
                     <div className="form-group">
                         <label>First Name</label>
-                        <input onChange={this.props.onChange} className="form-control" type="text" name="firstName" placeholder="Nombre" value={this.props.formValues.firstName}></input>
+                        <input onChange={this.props.onChange}
+                            className="form-control"
+                            type="text"
+                            name="firstName"
+                            placeholder="Nombre"
+                            value={this.props.formValues.firstName}>
+                        </input>
                     </div>
 
                     <div className="form-group">
                         <label>Last Name</label>
-                        <input onChange={this.props.onChange} className="form-control" type="text" name="lastName" placeholder="Apellido" value={this.props.formValues.lastName}></input>
+                        <input onChange={this.props.onChange}
+                            className="form-control"
+                            type="text"
+                            name="lastName"
+                            placeholder="Apellido"
+                            value={this.props.formValues.lastName}>
+                        </input>
                     </div>
 
                     <div className="form-group">
                         <label>Job Title</label>
-                        <input onChange={this.props.onChange} className="form-control" type="text" name="jobTitle" placeholder="Cargo" value={this.props.formValues.jobTitle}></input>
+                        <input onChange={this.props.onChange} 
+                        className="form-control" 
+                        type="text" 
+                        name="jobTitle" 
+                        placeholder="Cargo" 
+                        value={this.props.formValues.jobTitle}>
+                        </input>
                     </div>
 
                     <div className="form-group">
                         <label>Email</label>
-                        <input onChange={this.props.onChange} className="form-control" type="email" name="email" placeholder="Correo" value={this.props.formValues.email}></input>
+                        <input onChange={this.props.onChange} 
+                        className="form-control" 
+                        type="email" 
+                        name="email" 
+                        placeholder="Correo" 
+                        value={this.props.formValues.email}>
+                        </input>
                     </div>
 
                     <div className="form-group">
                         <label>Twitter</label>
-                        <input onChange={this.props.onChange} className="form-control" type="text" name="twitter" placeholder="@usuario" value={this.props.formValues.twitter}></input>
+                        <input onChange={this.props.onChange} 
+                        className="form-control" 
+                        type="text" 
+                        name="twitter" 
+                        placeholder="@usuario" 
+                        value={this.props.formValues.twitter}>
+                        </input>
                     </div>
                     {/*1- Forma 
                     
