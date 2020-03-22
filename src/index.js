@@ -7,6 +7,7 @@
 // JSX Necesita react y react-dom
 import React from 'react';
 import ReactDOM from 'react-dom';
+// Importar Globalmente los estilos a nuestra app completa de react
 import 'bootstrap/dist/css/bootstrap.css';
 import './global.css'
 // Componentes
