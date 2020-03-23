@@ -1,0 +1,54 @@
+.Badges__section-name {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem 0;
+}
+
+.Badges_avatar {
+    margin-right: 1rem;
+    width: 90px;
+    height: 90px;
+    padding: 12px;
+}
+
+.Badges__section__name {
+    font-size: 13px;
+    margin: 0px;
+}
+
+.Badges__section__jobTitle{
+    font-size: 13px;
+    margin-bottom: 1%;
+}
+
+.Badges__section__twitter{
+    font-size: 13px;
+    color: #1c9fe9fe;
+}
+
+.Badges__section_textTwitter{
+    vertical-align: middle;
+}
+
+.icon__twitter{
+    width: 32px;
+    height: 32px;
+}
+
+.Badges__section-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0.5rem 0;
+    background: #FFFFFF;
+}
+
+.Badges__header{
+    padding: 0.5rem 0;
+  height: 80px;
+  background: #FFFFFF;
+  display: flex;
+  justify-content: left;
+  margin-bottom: 1%;
+}
