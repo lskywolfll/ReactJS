@@ -13,9 +13,8 @@ import './global.css'
 import 'sweetalert2/dist/sweetalert2.css'
 // Componentes
 // import Badge from './components/Badge';
-// Paginas que contienen componentes
-import BadgeNew from './pages/BadgeNew';
-import Badges from './pages/Badges';
+// Componente para las rutas
+import App from './components/App';
 
 // JSX
 // const jsx = <h1>Hello, Platzi Badges from React!</h1>;
@@ -70,4 +69,4 @@ const container = document.getElementById('app');
 // />, 
 // container);
 
-ReactDOM.render(<Badges />, container);
+ReactDOM.render(<App />, container);
