@@ -11,7 +11,16 @@
 }
 
 .NotFound__title{
-    padding-top: 20%;
     text-align: center;
     color: white;
+    margin-top: 1%;
+}
+
+.NotFound__image{
+    width: 277px;
+    height: 277px;
+    background: url('../../images/img404.png');
+    background-repeat: round;
+    margin-left: 40%;
+    margin-top: 12%;
 }
