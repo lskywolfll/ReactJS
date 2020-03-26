@@ -1,0 +1,43 @@
+.home__astronauts {
+    background-repeat: repeat;
+    width: 91%;
+    height: 413px;
+    margin-top: 10%;
+    margin-left: 10%;
+}
+
+.home__confLogo{
+    width: 100%;
+    margin-top: 40%;
+    margin-left: 18%;
+    height: 196px;
+    transform: scale(0.8);
+}
+
+.home{
+    background: url('../../images/stars.svg'), #1B1B25;
+    background-repeat: repeat;
+    width: 100%;
+    height: 601px;
+}
+
+.home__title{
+    color: white;
+    font-size: 26px;
+    font-weight: bold;
+    margin-top: 0%;
+    margin-left: 36%;
+}
+
+.home__content{
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    margin-left: 36%;
+}
+
+.home__button{
+    margin-left: 47%;
+    box-shadow: 0 4px #7dcd40ab;
+    width: 39%;
+}

@@ -5,6 +5,7 @@ import Layout from '../components/Layout';
 import BadgeNew from '../pages/BadgeNew';
 import Badges from '../pages/Badges';
 import NotFound from '../pages/NotFound';
+import Home from '../pages/Home';
 
 function App() {
     return (
@@ -19,6 +20,7 @@ function App() {
                 */}
                     <Route exact path="/badges" component={Badges} />
                     <Route exact path="/badges/new" component={BadgeNew} />
+                    <Route exact path="/" component={Home} />
                     <Route component={NotFound}/>
                 </Switch>
             </Layout>
