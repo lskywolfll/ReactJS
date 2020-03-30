@@ -6,6 +6,7 @@ import PageLoading from '../components/PageLoading';
 import PageError from '../components/PageError';
 import api from '../api';
 import { Link } from 'react-router-dom';
+import ContentLoader from '../components/contentLoader';
 
 class Badges extends React.Component {
     // Se crea al artista y el escenario
@@ -34,12 +35,12 @@ class Badges extends React.Component {
         try {
             const data = await api.badges.list();
             this.setState({
-                loading: false,
+                loading: true,
                 data: data
             });
         } catch (error) {
             this.setState({
-                loading: false,
+                loading: true,
                 error: error
             });
         }
@@ -67,10 +68,32 @@ class Badges extends React.Component {
     render() {
 
         if (this.state.loading === true) {
-            return <PageLoading />
+            return (
+                <>
+                    <div className="Badges">
+                        <div className="Badges__hero">
+                            <div className="Badges__container">
+                                <img
+                                    className="Badges_conf-logo"
+                                    src={confLogo}
+                                    alt=""
+                                />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="Badges__buttons">
+                        <Link to="/badges/new" className="btn btn-primary">
+                            New Badge
+                        </Link>
+                    </div>
+
+                    <ContentLoader />
+                </>
+            )
         }
 
-        if (this.state.error){
+        if (this.state.error) {
             return <PageError error={this.state.error} />
         }
 
@@ -90,7 +113,7 @@ class Badges extends React.Component {
                 </div>
 
                 <div className="Badge__container">
-                    {this.state.data.length > 0 && (
+                    {this.state.data.length > 0 &&(
                         <div className="Badges__buttons">
                             <Link to="/badges/new" className="btn btn-primary">
                                 New Badge

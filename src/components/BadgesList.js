@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 class BadgesList extends React.Component {
     render() {
 
-        if(this.props.data.length === 0){
+        if(this.props.data.length === 0 || this.props.data === undefined){
             return (
                 <div className="NotFoundData">
                     <h3>No badges were found</h3>
