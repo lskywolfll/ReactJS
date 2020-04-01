@@ -4,6 +4,11 @@ import twitterIcon from '../images/twitter.png';
 import { Link } from 'react-router-dom';
 
 class BadgesList extends React.Component {
+
+    handleClickTwitter(nickname){
+        console.log(nickname);
+    }
+
     render() {
 
         if(this.props.data.length === 0 || this.props.data === undefined){

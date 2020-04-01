@@ -36,7 +36,7 @@ const Loader = props => {
       className="Loader__background"
       {...props}
     >
-      {props.imageType === 'circle' ? (
+      {props.imagetype === 'circle' ? (
         <circle cx="60" cy="45" r="30" />
       ) : (
         <rect x="20" y="20" rx="5" ry="5" width="64" height="63" />
@@ -56,7 +56,7 @@ const ImageList = () => (
         <Loader
           screen="desktop"
           key={i}
-          imageType={'circle'}
+          imagetype="circle"
           style={{ opacity: Number(2 / i).toFixed(1) }}
         />
       ))}
