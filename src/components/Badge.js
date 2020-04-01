@@ -2,8 +2,15 @@ import React from 'react';
 // import ReactDOM from 'react-dom';
 import './styles/Badge.css';
 import confLogo from '../images/badge-header.svg';
+import Gravatar from './Gravatar';
 
 class Badge extends React.Component {
+
+    handleChange(e){
+        console.log(e);
+        console.log(e.target)
+    }
+
     render() {
 
         // Props
@@ -18,7 +25,8 @@ class Badge extends React.Component {
                 lastName,
                 jobTitle,
                 twitter,
-                avatarUrl
+                avatarUrl,
+                email
             } = this.props;
 
         // Por convenciones para agregar los estilos deseados para el html que tengamos en nuestros componentes debemos usar classname en vez de class
@@ -30,7 +38,13 @@ class Badge extends React.Component {
             </div>
 
             <div className="Badge__section-name">
-                <img className="rounded-circle Badge_avatar" src={avatarUrl} alt="Avatar" />
+                <Gravatar
+                    className="rounded-circle Badge_avatar"
+                    email={email} s
+                    rc={avatarUrl}
+                    alt="Avatar"
+                    handleChange={this.handleChange}
+                />
                 <h1>{firstName} <br /> {lastName}</h1>
             </div>
 

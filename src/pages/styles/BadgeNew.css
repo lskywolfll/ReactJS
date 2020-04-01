@@ -5,6 +5,13 @@
   background-repeat: repeat;
   margin-bottom: 1rem;
   color: #ffffff;
+
+  display: flex;
+  justify-content: center;
+}
+
+.BadgeNew__hero-image{
+  max-height: 100px;
 }
 
 .masEspacio{
