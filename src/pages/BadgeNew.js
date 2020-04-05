@@ -3,8 +3,7 @@ import React from 'react';
 import header from '../images/platziconf-logo.svg';
 import Badge from '../components/Badge';
 import BadgeForm from '../components/BadgeForm';
-// Api Rest
-import Api from '../api';
+import PageLoading from '../components/PageLoading';
 // Estilos de la pagina
 import './styles/BadgeNew.css'
 // Alertas
@@ -14,7 +13,7 @@ import api from '../api';
 class BadgeNew extends React.Component {
 
     state = {
-        loading: true,
+        loading: false,
         error: null,
         form: {
             firstName: '',
@@ -54,6 +53,10 @@ class BadgeNew extends React.Component {
             title: 'Creacion Exitosa!',
             text: 'Muchas gracias por inscribirte en la conferencia 😊',
             icon: 'success'
+        }).then((result) => {
+            if(result.value || !result.value){
+                this.props.history.push('/badges');
+            }
         })
     }
 
@@ -75,6 +78,11 @@ class BadgeNew extends React.Component {
             let camposFaltantes = datosFaltante.join(',');
             this.alertaFaltanDatos(camposFaltantes)
         } else {
+            this.setState({
+                loading: true,
+                error: null
+            });
+
             try {
                 await api.badges.create(this.state.form);
                 this.setState({ loading: false });
@@ -89,6 +97,11 @@ class BadgeNew extends React.Component {
     };
 
     render() {
+
+        if(this.state.loading){
+            return <PageLoading />
+        }
+
         return (
             <React.Fragment>
 
