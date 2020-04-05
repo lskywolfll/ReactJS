@@ -7,6 +7,7 @@ import PageError from '../components/PageError';
 import api from '../api';
 import { Link } from 'react-router-dom';
 import ContentLoader from '../components/contentLoader';
+import MiniLoaderBadge from '../components/mini-loader';
 
 class Badges extends React.Component {
     // Se crea al artista y el escenario
@@ -24,6 +25,8 @@ class Badges extends React.Component {
     componentDidMount() {
         console.log('3. componentDidMount()');
         this.obtenerBadges();
+
+        this.intervalid = setInterval(this.obtenerBadges, 5000);
     }
 
     obtenerBadges = async () => {
@@ -62,12 +65,13 @@ class Badges extends React.Component {
     // Sale de escena el artista y se hace limpieza
     componentWillUnmount() {
         console.log('6. componentWillUnmount');
-        clearTimeout(this.timeoutId);
+        // clearTimeout(this.timeoutId);
+        clearInterval(this.intervalid);
     }
 
     render() {
 
-        if (this.state.loading === true) {
+        if (this.state.loading === true && !this.state.data) {
             return (
                 <>
                     <div className="Badges">
@@ -127,6 +131,9 @@ class Badges extends React.Component {
                         </div>
                     </div>
 
+                    {this.state.loading && (
+                        <MiniLoaderBadge countData={2}/>
+                    )}
                 </div>
             </React.Fragment>
         )
