@@ -5,15 +5,15 @@ import Badge from '../components/Badge';
 import BadgeForm from '../components/BadgeForm';
 import PageLoading from '../components/PageLoading';
 // Estilos de la pagina
-import './styles/BadgeNew.css'
+import './styles/BadgeEdit.css'
 // Alertas
 import Swal from 'sweetalert2/dist/sweetalert2';
 import api from '../api';
 
-class BadgeNew extends React.Component {
+class BadgeEdit extends React.Component {
 
     state = {
-        loading: false,
+        loading: true,
         error: null,
         form: {
             firstName: '',
@@ -23,6 +23,33 @@ class BadgeNew extends React.Component {
             twitter: ''
         }
     };
+
+    componentDidMount() {
+        this.fetchData();
+    }
+
+    fetchData = async e => {
+        this.setState({
+            loading: true,
+            error: null
+        });
+
+        try {
+            const data = await api.badges.read(
+                this.props.match.params.badgeId
+            )
+
+            this.setState({
+                loading: false,
+                form: data
+            });
+        } catch (error) {
+            this.setState({
+                loading: false,
+                error: error
+            });
+        }
+    }
 
     handleChange = e => {
         this.setState({
@@ -58,10 +85,10 @@ class BadgeNew extends React.Component {
         // Controlar cuando sea un error 500 para que mande un mensaje que los server estan caidos o algo
     }
 
-    alertaExitosa() {
+    alertaCambioExitoso() {
         Swal.fire({
-            title: 'Creacion Exitosa!',
-            text: 'Muchas gracias por inscribirte en la conferencia 😊',
+            title: 'Editacion Exitosa!',
+            text: 'Se han actualizado tus datos del formulario! 🧐',
             icon: 'success'
         }).then((result) => {
             if (result.value || !result.value) {
@@ -94,9 +121,9 @@ class BadgeNew extends React.Component {
             });
 
             try {
-                await api.badges.create(this.state.form);
+                await api.badges.update(this.props.match.params.badgeId, this.state.form);
                 this.setState({ loading: false });
-                this.alertaExitosa();
+                this.alertaCambioExitoso();
             } catch (error) {
                 this.setState({
                     error: error,
@@ -117,8 +144,8 @@ class BadgeNew extends React.Component {
         return (
             <React.Fragment>
 
-                <div className="BadgeNew__hero">
-                    <img className="BadgeNew__hero-image img-fluid" src={header} alt="Logo" />
+                <div className="BadgeEdit__hero">
+                    <img className="BadgeEdit__hero-image img-fluid" src={header} alt="Logo" />
                 </div>
 
                 <div className="container">
@@ -135,7 +162,7 @@ class BadgeNew extends React.Component {
                         </div>
 
                         <div className="col-6 masEspacio">
-                            <h1>New Attendant</h1>
+                            <h1>Edit Attendant</h1>
                             <BadgeForm
                                 onChange={this.handleChange}
                                 formValues={this.state.form}
@@ -150,4 +177,4 @@ class BadgeNew extends React.Component {
     }
 }
 
-export default BadgeNew;
+export default BadgeEdit;

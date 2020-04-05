@@ -37,8 +37,6 @@ class BadgeForm extends React.Component {
     render() {
         return (
             <div>
-                <h1>New Attendant</h1>
-
                 {/* 2 Forma
                 
                 Capturando el evento del form para enviar su data hacia otro lugar, a la api respectivamente.
