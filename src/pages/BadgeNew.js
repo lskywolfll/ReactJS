@@ -49,7 +49,7 @@ class BadgeNew extends React.Component {
         });
     }
 
-    alertaExitosa(){
+    alertaExitosa() {
         Swal.fire({
             title: 'Creacion Exitosa!',
             text: 'Muchas gracias por inscribirte en la conferencia 😊',
@@ -60,24 +60,21 @@ class BadgeNew extends React.Component {
     // Capturar el evento del envio de datos
     handleSubmit = async e => {
         e.preventDefault();
-        let datoFaltante = [];
-
-        console.log('El submit se ha activado!');
+        let datosFaltante = [];
 
         for (const propiedad in this.state.form) {
             if (this.state.form.hasOwnProperty(propiedad)) {
                 const valor = this.state.form[propiedad];
                 if (valor === '') {
-                    datoFaltante.push(propiedad);
+                    datosFaltante.push(propiedad);
                 }
             }
         }
 
         if (this.state.form.firstName === '' || this.state.form.lastName === '' || this.state.form.email === '' || this.state.form.jobTitle === '' || this.state.form.twitter === '') {
-            console.log('faltan datos');
-            let camposFaltantes = datoFaltante.join(',');
+            let camposFaltantes = datosFaltante.join(',');
             this.alertaFaltanDatos(camposFaltantes)
-        }else{
+        } else {
             try {
                 await api.badges.create(this.state.form);
                 this.setState({ loading: false });
