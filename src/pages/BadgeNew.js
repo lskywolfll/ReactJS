@@ -48,34 +48,44 @@ class BadgeNew extends React.Component {
         });
     }
 
+    alertaError(){
+        Swal.fire({
+            title: 'Opps!',
+            text: `Ha ocurrido algo inesperado 😅, vuelve a intentarlo nuevamente`,
+            icon: 'error'
+        });
+
+        // Controlar cuando sea un error 500 para que mande un mensaje que los server estan caidos o algo
+    }
+
     alertaExitosa() {
         Swal.fire({
             title: 'Creacion Exitosa!',
             text: 'Muchas gracias por inscribirte en la conferencia 😊',
             icon: 'success'
         }).then((result) => {
-            if(result.value || !result.value){
+            if (result.value || !result.value) {
                 this.props.history.push('/badges');
             }
-        })
+        });
     }
 
     // Capturar el evento del envio de datos
     handleSubmit = async e => {
         e.preventDefault();
-        let datosFaltante = [];
+        let datosFaltantes = [];
 
         for (const propiedad in this.state.form) {
             if (this.state.form.hasOwnProperty(propiedad)) {
                 const valor = this.state.form[propiedad];
                 if (valor === '') {
-                    datosFaltante.push(propiedad);
+                    datosFaltantes.push(propiedad);
                 }
             }
         }
 
         if (this.state.form.firstName === '' || this.state.form.lastName === '' || this.state.form.email === '' || this.state.form.jobTitle === '' || this.state.form.twitter === '') {
-            let camposFaltantes = datosFaltante.join(',');
+            let camposFaltantes = datosFaltantes.join(',');
             this.alertaFaltanDatos(camposFaltantes)
         } else {
             this.setState({
@@ -92,13 +102,15 @@ class BadgeNew extends React.Component {
                     error: error,
                     loading: false
                 });
+
+                this.alertaError();
             }
         }
     };
 
     render() {
 
-        if(this.state.loading){
+        if (this.state.loading) {
             return <PageLoading />
         }
 
@@ -123,7 +135,12 @@ class BadgeNew extends React.Component {
                         </div>
 
                         <div className="col-6 masEspacio">
-                            <BadgeForm onChange={this.handleChange} formValues={this.state.form} handleSubmit={this.handleSubmit} />
+                            <BadgeForm
+                                onChange={this.handleChange}
+                                formValues={this.state.form}
+                                handleSubmit={this.handleSubmit}
+                                // error={this.state.error}
+                            />
                         </div>
                     </div>
                 </div>
