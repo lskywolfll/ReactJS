@@ -6,11 +6,6 @@ import Gravatar from './Gravatar';
 
 class Badge extends React.Component {
 
-    handleChange(e){
-        console.log(e);
-        console.log(e.target)
-    }
-
     render() {
 
         // Props
@@ -43,7 +38,6 @@ class Badge extends React.Component {
                     email={email} s
                     rc={avatarUrl}
                     alt="Avatar"
-                    handleChange={this.handleChange}
                 />
                 <h1>{firstName} <br /> {lastName}</h1>
             </div>

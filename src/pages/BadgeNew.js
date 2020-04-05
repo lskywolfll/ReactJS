@@ -3,14 +3,19 @@ import React from 'react';
 import header from '../images/platziconf-logo.svg';
 import Badge from '../components/Badge';
 import BadgeForm from '../components/BadgeForm';
+// Api Rest
+import Api from '../api';
 // Estilos de la pagina
 import './styles/BadgeNew.css'
 // Alertas
 import Swal from 'sweetalert2/dist/sweetalert2';
+import api from '../api';
 
 class BadgeNew extends React.Component {
 
     state = {
+        loading: true,
+        error: null,
         form: {
             firstName: '',
             lastName: '',
@@ -44,8 +49,16 @@ class BadgeNew extends React.Component {
         });
     }
 
+    alertaExitosa(){
+        Swal.fire({
+            title: 'Creacion Exitosa!',
+            text: 'Muchas gracias por inscribirte en la conferencia 😊',
+            icon: 'success'
+        })
+    }
+
     // Capturar el evento del envio de datos
-    handleSubmit = e => {
+    handleSubmit = async e => {
         e.preventDefault();
         let datoFaltante = [];
 
@@ -64,6 +77,17 @@ class BadgeNew extends React.Component {
             console.log('faltan datos');
             let camposFaltantes = datoFaltante.join(',');
             this.alertaFaltanDatos(camposFaltantes)
+        }else{
+            try {
+                await api.badges.create(this.state.form);
+                this.setState({ loading: false });
+                this.alertaExitosa();
+            } catch (error) {
+                this.setState({
+                    error: error,
+                    loading: false
+                });
+            }
         }
     };
 

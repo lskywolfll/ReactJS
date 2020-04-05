@@ -1,6 +1,7 @@
 import React from 'react';
 import './styles/BadgesList.css';
 import twitterIcon from '../images/twitter.png';
+import Gravatar from '../components/Gravatar';
 import { Link } from 'react-router-dom';
 
 class BadgesList extends React.Component {
@@ -27,13 +28,12 @@ class BadgesList extends React.Component {
                 {this.props.data.map((badge) => {
                     return (
                         <li key={badge.id}>
-                            {/* <div className="container Badge__header">
-
-                            </div> */}
-
                             <div className="Badges__header">
                                 <div className="Badges__section-name">
-                                    <img className="rounded-circle Badges_avatar" src={badge.avatarUrl} alt="Avatar" />
+                                    <Gravatar 
+                                        className="rounded-circle Badges_avatar"
+                                        email={badge.email}
+                                    />
                                 </div>
 
                                 <div className="Badges__section-info">
