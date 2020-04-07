@@ -84,7 +84,7 @@ class BadgeNew extends React.Component {
             }
         }
 
-        if (this.state.form.firstName === '' || this.state.form.lastName === '' || this.state.form.email === '' || this.state.form.jobTitle === '' || this.state.form.twitter === '') {
+        if (datosFaltantes.length > 0) {
             let camposFaltantes = datosFaltantes.join(',');
             this.alertaFaltanDatos(camposFaltantes)
         } else {
