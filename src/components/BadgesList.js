@@ -80,6 +80,7 @@ function BadgesList(props) {
                             <Link
                                 className="text-decoration-none"
                                 to={`/badges/${badge.id}`}
+                                onKeyDwon
                                 style={{ color: 'black' }}>
                                 <BadgesListItem badge={badge} />
                             </Link>
