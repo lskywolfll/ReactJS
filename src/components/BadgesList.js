@@ -1,7 +1,8 @@
-import React, {useState, useMemo} from 'react';
+import React, { useState, useMemo } from 'react';
 import './styles/BadgesList.css';
 import twitterIcon from '../images/twitter.png';
 import Gravatar from '../components/Gravatar';
+import FilterListBadges from '../components/FilterListBadges';
 import { Link } from 'react-router-dom';
 
 class BadgesListItem extends React.Component {
@@ -32,62 +33,46 @@ class BadgesListItem extends React.Component {
     }
 }
 
-function useSearchBadges(badges){
+function useSearchBadges(badges) {
     const [query, setQuery] = useState("");
-    const [ filteredBadges, setFilteredResults] = useState(badges);
+    const [filteredBadges, setFilteredResults] = useState(badges);
 
     useMemo(() => {
         const result = badges.filter(badge => {
             return `${badge.firstName} ${badge.lastName}`
-            .toLowerCase()
-            .includes(query.toLowerCase());
+                .toLowerCase()
+                .includes(query.toLowerCase());
         });
 
         setFilteredResults(result);
     }, [badges, query]);
 
-    return { query, setQuery, filteredBadges}
+    return { query, setQuery, filteredBadges }
 }
 
 function BadgesList(props) {
 
     const data = props.data;
-    
+
     const { query, setQuery, filteredBadges } = useSearchBadges(data);
 
     if (filteredBadges.length === 0 || data === undefined) {
         return (
             <React.Fragment>
-                <div className="form-group">
-                <label>Filter Badges</label>
-                <input type="text" className="form-control"
-                    value={query}
-                    onChange={e => {
-                        setQuery(e.target.value);
-                    }}
-                />
-            </div>
-            <div className="NotFoundData">
-                <h3>No badges were found</h3>
-                <Link className="btn btn-primary" to="badges/new">
-                    Create new badge
+                <FilterListBadges onChange={setQuery} filterValue={query} />
+                <div className="NotFoundData">
+                    <h3>No badges were found</h3>
+                    <Link className="btn btn-primary" to="badges/new">
+                        Create new badge
                     </Link>
-            </div>
+                </div>
             </React.Fragment>
         )
     }
 
     return (
-        <div>
-            <div className="form-group">
-                <label>Filter Badges</label>
-                <input type="text" className="form-control"
-                    value={query}
-                    onChange={e => {
-                        setQuery(e.target.value);
-                    }}
-                />
-            </div>
+        <>
+            <FilterListBadges onChange={setQuery} filterValue={query} />
             <ul className="list-unstyled">
                 {filteredBadges.slice(0).reverse().map((badge) => {
                     return (
@@ -102,7 +87,7 @@ function BadgesList(props) {
                     )
                 })}
             </ul>
-        </div>
+        </>
     )
 }
 

@@ -5,21 +5,21 @@ import Badge from '../components/Badge';
 import DeleteBadgeModal from '../components/DeleteBadgeModal';
 import confLogo from '../images/platziconf-logo.svg'
 
-function useIncreseCount(max) {
-    const [count, setCount] = React.useState(0);
+// function useIncreseCount(max) {
+//     const [count, setCount] = React.useState(0);
 
-    if(count > max){
-        setCount(0);
-    }
+//     if(count > max){
+//         setCount(0);
+//     }
 
-    return [count, setCount];
-}
+//     return [count, setCount];
+// }
 
 function BadgeDetails(props) {
     // Es como decir:
     // const [state, setState] que mayormente usamos con regularidad en componentes de clase :o
     // Por lo cual este funciona como crear variable y crear funcion para setearle valor cosa que nosotros haremos la logica despues que sera el encargado de hacer algo
-    const [count, setCount] = useIncreseCount(4);
+    // const [count, setCount] = useIncreseCount(4);
 
     const {
         firstName,
@@ -62,11 +62,11 @@ function BadgeDetails(props) {
                         <h2>Actions</h2>
                         <div>
                             
-                            <button onClick={() => {
+                            {/* <button onClick={() => {
                                 setCount(count + 1);
                             }} className="btn btn-primary">
                                 Increase Count: { count }
-                            </button>
+                            </button> */}
 
                             <Link
                                 className="btn btn-primary mb-4"
