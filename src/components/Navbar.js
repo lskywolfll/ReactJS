@@ -4,7 +4,6 @@ import logo from '../images/logo.svg'
 // Estilos
 import './styles/Navbar.css'
 import { Link } from 'react-router-dom';
-// Pagina con react que contiene otros componentes
 // Paginas es un componente que tiene mas componentes
 class Navbar extends React.Component {
     render() {
