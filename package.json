@@ -2,6 +2,7 @@
   "name": "platzi-badges",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://lskywolfll.github.io/ReactJS",
   "scripts": {
     "start": "npm-run-all -p client server",
     "client": "react-scripts start",
@@ -9,10 +10,12 @@
     "seed": "node server/seed.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy": "gh-page -d build"
   },
   "dependencies": {
     "bootstrap": "^4.4.1",
+    "gh-pages": "^2.2.0",
     "md5": "^2.2.1",
     "react": "16.8.3",
     "react-content-loader": "^5.0.2",
