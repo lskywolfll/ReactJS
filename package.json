@@ -6,7 +6,7 @@
   "scripts": {
     "start": "npm-run-all -p client server",
     "client": "react-scripts start",
-    "server": "json-server --port 3001 --watch server/db.json",
+    "server": "json-server --port 3001 --no-cors --watch server/db.json",
     "seed": "node server/seed.js",
     "build": "react-scripts build",
     "test": "react-scripts test",

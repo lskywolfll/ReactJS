@@ -1,4 +1,4 @@
-const BASE_URL = process.env.BASE_URL_BACKEND || 'http://localhost:3001';
+const BASE_URL = 'http://localhost:3001';
 
 const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
 const randomNumber = (min = 0, max = 1) =>
